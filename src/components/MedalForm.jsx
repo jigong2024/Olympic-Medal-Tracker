@@ -1,20 +1,35 @@
 import React, { useState } from "react";
 
-const MedalForm = ({ onAddCountry }) => {
+const MedalForm = ({ onAddCountry, countries, setCountries }) => {
   const [country, setCountry] = useState("");
   const [gold, setGold] = useState("");
   const [silver, setSilver] = useState("");
   const [bronze, setBronze] = useState("");
 
+  // 국가 추가 버튼 클릭시 실행
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddCountry([country, gold, silver, bronze]);
 
-    // 폼 초기화
+    resetForm();
+  };
+
+  // 폼 초기화
+  const resetForm = () => {
     setCountry("");
     setGold("");
     setSilver("");
     setBronze("");
+  };
+
+  // 업데이트 버튼 클릭시 실행
+  const handleUpdate = () => {
+    const updatedCountries = countries.map((c) => {
+      return c[0] === country ? [country, gold, silver, bronze] : c;
+    });
+
+    setCountries(updatedCountries);
+    resetForm();
   };
 
   const formContainerStyle = {
@@ -73,7 +88,9 @@ const MedalForm = ({ onAddCountry }) => {
         >
           국가 추가
         </button>
-        <button type="button">업데이트</button>
+        <button type="button" onClick={handleUpdate}>
+          업데이트
+        </button>
       </div>
     </form>
   );

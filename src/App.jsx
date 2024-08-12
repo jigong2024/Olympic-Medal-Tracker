@@ -24,7 +24,11 @@ const App = () => {
           marginTop: "20px",
         }}
       >
-        <MedalForm onAddCountry={addCountry} />
+        <MedalForm
+          onAddCountry={addCountry}
+          countries={countries}
+          setCountries={setCountries}
+        />
       </main>
       <section
         style={{
