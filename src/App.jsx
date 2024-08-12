@@ -12,8 +12,17 @@ const App = () => {
 
   const [countries, setCountries] = useState([]);
 
+  // 국가 메달 수 리스트 추가하는 함수
   const addCountry = (newCountry) => {
     setCountries([...countries, newCountry]);
+  };
+
+  // 국가 삭제 함수
+  const deleteCountry = (countryName) => {
+    const updatedCountries = countries.filter(
+      (country) => country[0] !== countryName
+    );
+    setCountries(updatedCountries);
   };
 
   return (
@@ -35,7 +44,7 @@ const App = () => {
           marginTop: "60px",
         }}
       >
-        <MedalList countries={countries} />
+        <MedalList countries={countries} onDeleteCountry={deleteCountry} />
       </section>
     </div>
   );
