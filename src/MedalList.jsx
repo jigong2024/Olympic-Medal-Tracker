@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 const MedalList = ({ countries, onDeleteCountry }) => {
   // 금메달 수를 기준으로 국가를 정렬하는 함수
@@ -10,8 +11,8 @@ const MedalList = ({ countries, onDeleteCountry }) => {
   const sortedCountries = sortGoldMedals(countries);
 
   return (
-    <div>
-      <table>
+    <div className="medal-list-container">
+      <table className="medal-table">
         <thead>
           <tr>
             <th>국가</th>
@@ -32,7 +33,12 @@ const MedalList = ({ countries, onDeleteCountry }) => {
                 <td>{silver}</td>
                 <td>{bronze}</td>
                 <td>
-                  <button onClick={() => onDeleteCountry(name)}>삭제</button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => onDeleteCountry(name)}
+                  >
+                    삭제
+                  </button>
                 </td>
               </tr>
             );

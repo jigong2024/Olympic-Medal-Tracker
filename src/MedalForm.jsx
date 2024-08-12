@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 
 const MedalForm = ({ onAddCountry, countries, setCountries }) => {
   const [country, setCountry] = useState("");
@@ -32,22 +33,9 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     resetForm();
   };
 
-  const formContainerStyle = {
-    display: "flex",
-    flexDirection: "row",
-    gap: "60px",
-  };
-
-  const fieldGroupStyle = {
-    display: "flex",
-    flexDirection: "column",
-    width: "200px",
-    textAlign: "center",
-  };
-
   return (
-    <form style={formContainerStyle} onSubmit={handleSubmit}>
-      <label style={fieldGroupStyle}>
+    <form className="medal-form" onSubmit={handleSubmit}>
+      <label className="form-group">
         국가명
         <input
           type="text"
@@ -55,7 +43,7 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
           onChange={(e) => setCountry(e.target.value)}
         />
       </label>
-      <label style={fieldGroupStyle}>
+      <label className="form-group">
         금메달
         <input
           type="number"
@@ -63,7 +51,7 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
           onChange={(e) => setGold(e.target.value)}
         />
       </label>
-      <label style={fieldGroupStyle}>
+      <label className="form-group">
         은메달
         <input
           type="number"
@@ -71,7 +59,7 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
           onChange={(e) => setSilver(e.target.value)}
         />
       </label>
-      <label style={fieldGroupStyle}>
+      <label className="form-group">
         동메달
         <input
           type="number"
@@ -79,16 +67,17 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
           onChange={(e) => setBronze(e.target.value)}
         />
       </label>
-      <div>
+      <div className="button-group">
         <button
           style={{
             marginRight: "20px",
           }}
           type="submit"
+          className="btn btn-add"
         >
           국가 추가
         </button>
-        <button type="button" onClick={handleUpdate}>
+        <button type="button" className="btn btn-update" onClick={handleUpdate}>
           업데이트
         </button>
       </div>
