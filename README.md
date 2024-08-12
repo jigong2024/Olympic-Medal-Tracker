@@ -1,8 +1,26 @@
-# React + Vite
+###### <프로젝트 구조>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+이 프로젝트는 세 가지 주요 컴포넌트로 구성되어 있습니다.
 
-Currently, two official plugins are available:
+1. App 컴포넌트(App.jsx)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   - 전체 애플리케이션을 렌더링 하는 메인 컴포넌트입니다.
+   - 국가와 메달 수에 대한 리스트 관리를 합니다.
+   - MedalForm과 MedalList 컴포넌트를 렌더링합니다.
+
+2. MedalForm 컴포넌트(MedalForm.jsx)
+
+   - 국가 메달 정보를 추가하거나 업데이트하기 위한 입력 폼을 처리합니다.
+   - 폼 입력(국가명, 금메달, 은메달, 동메달)에 대한 상태를 관리합니다.
+   - 새로운 국가를 추가하거나 기존 국가 정보를 업데이트 하는 기능을 제공합니다.
+
+3. MedalList 컴포넌트(MedaListe.jsx)
+   - 국가 목록과 메달 수를 테이블 형식으로 표시합니다.
+   - 국가를 금메달 수에 따라 내림차순으로 정렬합니다.
+   - 목록에서 국가별 메달리스트를 삭제하는 기능을 제공합니다.
+
+#### <컴포넌트 계층 구조>
+
+App
+├── MedalForm
+└── MedalList
