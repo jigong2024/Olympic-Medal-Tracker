@@ -21,6 +21,8 @@
 
 #### <컴포넌트 계층 구조>
 
+```
 App
 ├── MedalForm
 └── MedalList
+```
