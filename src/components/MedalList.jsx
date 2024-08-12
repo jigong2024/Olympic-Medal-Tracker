@@ -1,9 +1,16 @@
 import React from "react";
 
 const MedalList = ({ countries, onDeleteCountry }) => {
+  // 금메달 수를 기준으로 국가를 정렬하는 함수
+  const sortGoldMedals = (countries) => {
+    return [...countries].sort((a, b) => b[1] - a[1]);
+  };
+
+  // 정렬될 국가 리스트
+  const sortedCountries = sortGoldMedals(countries);
+
   return (
     <div>
-      <h2>국가별 메달 현황</h2>
       <table>
         <thead>
           <tr>
@@ -16,7 +23,7 @@ const MedalList = ({ countries, onDeleteCountry }) => {
           </tr>
         </thead>
         <tbody>
-          {countries.map((country, index) => {
+          {sortedCountries.map((country, index) => {
             const [name, gold, silver, bronze] = country;
             return (
               <tr key={index}>
