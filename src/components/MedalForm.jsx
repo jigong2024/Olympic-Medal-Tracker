@@ -10,13 +10,36 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     { name: "동메달", value: "", type: "number" },
   ]);
 
+  // 유효성 검사
+  const validateForm = () => {
+    if (medal.some((ele) => ele.value === "")) {
+      alert("모든 빈칸을 채워주세요!");
+      return false;
+    }
+
+    if (countries.some((country) => country[0] === medal[0].value)) {
+      alert(
+        "이미 존재하는 국가입니다. 업데이트 하려면 업데이트 버튼을 누르세요."
+      );
+      return false;
+    }
+
+    if (medal.slice(1).some((ele) => parseInt(ele.value) < 0)) {
+      alert("메달 수는 0 이상이어야 합니다.");
+      return false;
+    }
+    return true;
+  };
+
   // 국가 추가 버튼 클릭시 실행
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newCountryData = medal.map((ele) => ele.value);
-    onAddCountry(newCountryData);
+    if (validateForm()) {
+      const newCountryData = medal.map((ele) => ele.value);
+      onAddCountry(newCountryData);
 
-    resetForm();
+      resetForm();
+    }
   };
 
   // 폼 초기화
@@ -38,9 +61,7 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     setCountries(updatedCountries);
     resetForm();
   };
-  // useEffect(() => {
-  //   console.log(typeof gold);
-  // }, [gold]);
+
   return (
     <form className="medal-form" onSubmit={handleSubmit}>
       {medal?.map((ele, idx) => {
