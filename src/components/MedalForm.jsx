@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "./input";
 import "../App.css";
 
@@ -13,8 +13,8 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
   // 국가 추가 버튼 클릭시 실행
   const handleSubmit = (e) => {
     e.preventDefault();
-    const add = medal.map((ele) => ele.value);
-    onAddCountry(add);
+    const newCountryData = medal.map((ele) => ele.value);
+    onAddCountry(newCountryData);
 
     resetForm();
   };
@@ -22,8 +22,8 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
   // 폼 초기화
   const resetForm = () => {
     setMedal(
-      medal.map((item) => {
-        return { ...item, value: "" };
+      medal.map((ele) => {
+        return { ...ele, value: "" };
       })
     );
   };

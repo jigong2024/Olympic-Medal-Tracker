@@ -4,12 +4,12 @@ const Input = ({ data, setMedal }) => {
   const handleOnchange = (e) => {
     const { name, value } = e.target;
 
-    setMedal((prev) => {
-      return prev.map((item) => {
-        if (item.name === name) {
-          return { ...item, value: value };
+    setMedal((previousMedalState) => {
+      return previousMedalState.map((medalField) => {
+        if (medalField.name === name) {
+          return { ...medalField, value: value };
         }
-        return item;
+        return medalField;
       });
     });
   };
