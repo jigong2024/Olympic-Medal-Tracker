@@ -10,8 +10,8 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     { name: "동메달", value: "", type: "number" },
   ]);
 
-  // 유효성 검사
-  const validateForm = () => {
+  // 유효성 검사(국가추가시)
+  const addValidateForm = () => {
     if (medal.some((ele) => ele.value === "")) {
       alert("모든 빈칸을 채워주세요!");
       return false;
@@ -31,13 +31,48 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     return true;
   };
 
+  // 유효성 검사(업데이트시)
+  const updateValidateForm = () => {
+    if (medal.some((ele) => ele.value === "")) {
+      alert("모든 빈칸을 채워주세요!");
+      return false;
+    }
+
+    if (medal.slice(1).some((ele) => parseInt(ele.value) < 0)) {
+      alert("메달 수는 0 이상이어야 합니다.");
+      return false;
+    }
+
+    if (!countries.some((country) => country[0] === medal[0].value)) {
+      alert(
+        "입력하신 국가가 존재하지 않습니다. 국가를 추가하려면 국가 추가 버튼을 누르세요."
+      );
+      return false;
+    }
+
+    return true;
+  };
+
   // 국가 추가 버튼 클릭시 실행
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (addValidateForm()) {
       const newCountryData = medal.map((ele) => ele.value);
       onAddCountry(newCountryData);
 
+      resetForm();
+    }
+  };
+
+  // 업데이트 버튼 클릭시 실행
+  const handleUpdate = () => {
+    if (updateValidateForm()) {
+      const [country, gold, silver, bronze] = medal.map((item) => item.value);
+      const updatedCountries = countries.map((c) => {
+        return c[0] === country ? [country, gold, silver, bronze] : c;
+      });
+
+      setCountries(updatedCountries);
       resetForm();
     }
   };
@@ -50,18 +85,6 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
       })
     );
   };
-
-  // 업데이트 버튼 클릭시 실행
-  const handleUpdate = () => {
-    const [country, gold, silver, bronze] = medal.map((item) => item.value);
-    const updatedCountries = countries.map((c) => {
-      return c[0] === country ? [country, gold, silver, bronze] : c;
-    });
-
-    setCountries(updatedCountries);
-    resetForm();
-  };
-
   return (
     <form className="medal-form" onSubmit={handleSubmit}>
       {medal?.map((ele, idx) => {
