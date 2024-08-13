@@ -3,11 +3,6 @@ import Input from "./input";
 import "../App.css";
 
 const MedalForm = ({ onAddCountry, countries, setCountries }) => {
-  // const [country, setCountry] = useState("");
-  // const [gold, setGold] = useState("");
-  // const [silver, setSilver] = useState("");
-  // const [bronze, setBronze] = useState("");
-
   const [medal, setMedal] = useState([
     { name: "국가명", value: "", type: "text" },
     { name: "금메달", value: "", type: "number" },
