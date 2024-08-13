@@ -15,9 +15,9 @@ const MedalList = ({ countries, onDeleteCountry }) => {
         <thead>
           <tr>
             <th>국가</th>
-            <th>금메달</th>
-            <th>은메달</th>
-            <th>동메달</th>
+            <th>금메달🥇</th>
+            <th>은메달🥈</th>
+            <th>동메달🥉</th>
             <th></th>
             {/* 삭제버튼 열 추가 */}
           </tr>

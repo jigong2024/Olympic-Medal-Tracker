@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div className="all-container">
-      <h1>2024 파리 올림픽</h1>
+      <h1>🏆2024 파리 올림픽🏆</h1>
       <main className="input-container">
         <MedalForm
           onAddCountry={addCountry}
