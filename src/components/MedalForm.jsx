@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import "../App.css";
 
 const MedalForm = ({ onAddCountry, countries, setCountries }) => {
   const [country, setCountry] = useState("");
@@ -32,7 +32,9 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     setCountries(updatedCountries);
     resetForm();
   };
-
+  useEffect(() => {
+    console.log(typeof gold);
+  }, [gold]);
   return (
     <form className="medal-form" onSubmit={handleSubmit}>
       <label className="form-group">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import MedalForm from "./MedalForm";
-import MedalList from "./MedalList";
+import MedalForm from "./components/MedalForm";
+import MedalList from "./components/MedalList";
 import "./App.css";
 
 const App = () => {

@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-
+import "../App.css";
 const MedalList = ({ countries, onDeleteCountry }) => {
   // 금메달 수를 기준으로 국가를 정렬하는 함수
   const sortGoldMedals = (countries) => {
