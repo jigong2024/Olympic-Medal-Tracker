@@ -32,9 +32,9 @@ const MedalForm = ({ onAddCountry, countries, setCountries }) => {
     setCountries(updatedCountries);
     resetForm();
   };
-  useEffect(() => {
-    console.log(typeof gold);
-  }, [gold]);
+  // useEffect(() => {
+  //   console.log(typeof gold);
+  // }, [gold]);
   return (
     <form className="medal-form" onSubmit={handleSubmit}>
       <label className="form-group">
